@@ -1,0 +1,21 @@
+name: Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      num:
+        required: true
+        type: number
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run script
+        run: |
+          echo $NUM
+        env:
+          NUM: ${{ github.event.inputs.num }}
